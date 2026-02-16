@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
-import { NODE_ENV, PORT } from './config/index.ts';
-import { UserRouter } from './features/users/users.router.ts';
+import { NODE_ENV, PORT } from './config';
+import { UserRouter } from './features/users/users.router';
 
 const app = express();
 app.use(express.json());
