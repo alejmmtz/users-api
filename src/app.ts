@@ -1,9 +1,14 @@
 import express, { Router } from 'express';
 import { NODE_ENV, PORT } from './config';
 import { UserRouter } from './features/users/users.router';
+import cors from 'cors';
+import { UserController } from './features/users/user.controller';
+import { errorsMiddleware } from './middlewares/errorsMiddleware';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+app.use(errorsMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!!');
@@ -12,8 +17,12 @@ app.get('/', (req, res) => {
 const apiRouter = Router();
 app.use('/api', apiRouter);
 
-const userRouter = new UserRouter();
+const userController = new UserController();
+
+const userRouter = new UserRouter(userController);
 apiRouter.use(userRouter.router);
+
+app.use(errorsMiddleware);
 
 if (NODE_ENV !== 'production') {
   app.listen(PORT, () => {
