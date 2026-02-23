@@ -3,3 +3,8 @@ export interface User {
   name: String;
   email: String;
 }
+
+export interface CreateUserDTO {
+  name: String;
+  email: String;
+}
