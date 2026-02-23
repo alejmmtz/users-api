@@ -10,7 +10,7 @@ export class UserController {
   }
 
   getUsers = (req: Request, res: Response) => {
-    return res.json(this.getUsers);
+    return res.json(this.users);
   };
 
   createUsers = (req: Request, res: Response) => {

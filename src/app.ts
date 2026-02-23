@@ -8,7 +8,6 @@ import { errorsMiddleware } from './middlewares/errorsMiddleware';
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(errorsMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!!');
